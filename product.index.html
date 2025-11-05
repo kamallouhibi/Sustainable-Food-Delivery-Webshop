@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Product Page</title>
+    <link rel="stylesheet" href="./style.css">
+
+  </head>
+    
+  <body>
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FRAM – Product Page</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Leaflet Map API -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+
+<body>
+  <!-- NAVIGATION -->
+  <header class="navbar">
+    <div class="menu-icon" aria-label="Toggle navigation">☰</div>
+    <h1 class="brand">FRAM</h1>
+    <div class="status-indicator" aria-label="Online"></div>
+    <nav id="mobileMenu" class="mobile-menu hidden" aria-label="Mobile menu">
+      <a href="index.html">Home</a>
+      <a href="product.html" class="active">Products</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- PRODUCT SECTION -->
+    <section class="products">
+      <h2>Produce</h2>
+      <p>
+        Explore our selection of seasonal produce, sourced directly from
+        local farms to ensure peak freshness and quality. Every item is
+        chosen with care, supporting sustainable practices and bringing
+        the best of the harvest to your table.
+      </p>
+
+      <div class="product-grid">
+        <article>
+          <img src="https://images.unsplash.com/photo-1614373532018-92a75430a0da?q=80&w=987&auto=format&fit=crop" alt="Organic oats in a bowl" />
+          <button class="basket-btn">Add to basket →</button>
+          <h3>Oats</h3>
+          <p class="price">16 kr / kg</p>
+          <p>1 kg</p>
+        </article>
+
+        <article>
+          <img src="https://images.unsplash.com/photo-1508747703725-719777637510?q=80&w=987&auto=format&fit=crop" alt="Fresh red onions" />
+          <button class="basket-btn">Add to basket →</button>
+          <h3>Red Onions</h3>
+          <p class="price">45 kr / kg</p>
+          <p>0.5 kg</p>
+        </article>
+
+        <article>
+          <img src="https://images.unsplash.com/reserve/E6Ai8EoSQp2unXHEd1GA_GarlicHarvest.jpg?q=80&w=987&auto=format&fit=crop" alt="Fresh garlic bulbs" />
+          <button class="basket-btn">Add to basket →</button>
+          <h3>Garlic</h3>
+          <p class="price">38 kr</p>
+          <p>0.2 kg</p>
+        </article>
+
+        <article>
+          <img src="https://images.unsplash.com/photo-1590165482129-1b8b27698780?q=80&w=927&auto=format&fit=crop" alt="Organic potatoes from Norway" />
+          <button class="basket-btn">Add to basket →</button>
+          <h3>Potatoes</h3>
+          <p class="price">32 kr / kg</p>
+          <p>1 kg</p>
+        </article>
+
+        <article>
+          <img src="https://images.unsplash.com/photo-1508747774537-d8ae09fa7dba?q=80&w=1674&auto=format&fit=crop" alt="Fresh carrots from local farm" />
+          <button class="basket-btn">Add to basket →</button>
+          <h3>Carrots</h3>
+          <p class="price">48 kr / kg</p>
+          <p>1 kg</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- MAP SECTION -->
+    <section class="partner-farms">
+      <div class="intro">
+        <h2>SEE OUR PARTNERING FARMS</h2>
+      </div>
+      <div id="farmMap" class="map" title="Map of partner farms"></div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <h2>FRAM</h2>
+    <h3>Stay Updated</h3>
+    <p>Sign up for our newsletter to be the first to know about new produce or other exciting news!</p>
+    <form id="newsletterForm" aria-label="Newsletter subscription form">
+      <input type="text" id="name" name="name" placeholder="First name" required />
+      <input type="email" id="email" name="email" placeholder="E-mail address" required />
+      <button type="submit">Send</button>
+    </form>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+    <script  src="./script.js"></script>
+
+  </body>
+  
+</html>
