@@ -1,72 +1,47 @@
 # Fram — Sustainable Food Delivery Webshop
 
-Prosjektoppgave i PRO1001 Frontend Essentials. En nettside for en bærekraftig
-matleveringstjeneste som kobler kunder med ferske produkter fra lokale gårder.
+Project assignment for PRO1001 Frontend Essentials. A website for a sustainable
+food delivery service connecting customers with fresh produce from local farms.
 
-> ⚠️ Dette prosjektet er under utvikling. README fylles ut fortløpende gjennom
-> utviklingsperioden.
+> ⚠️ This project is under active development. The README is updated
+> continuously throughout the development period.
 
-## Prosjektbeskrivelse
+## Project Description
 
-Fram er en frontend-løsning bygget med HTML5, CSS3 og vanilla JavaScript (ES6+).
-Nettsiden implementerer et Figma-design levert av oppdragsgiver, og inkluderer:
+Fram is a frontend solution built with HTML5, CSS3, and vanilla JavaScript (ES6+).
+The website implements a Figma design provided by the client, and includes:
 
-- En hovedside som presenterer tjenesten
-- En produktoversiktsside
-- Et kontaktskjema / chatbot for kundehenvendelser
-- Integrasjon med et eksternt API
+- A main page showcasing the service
+- A product listing page
+- A contact form / chatbot for customer inquiries
+- Integration with an external API
 
-## Kom i gang
+## Getting Started
 
-### Forutsetninger
+### Prerequisites
 
-- En moderne nettleser (Chrome, Firefox, Edge)
-- En kodeeditor, f.eks. Visual Studio Code
-- (Valgfritt) [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)-utvidelse for lokal utviklingsserver
+- A modern web browser (Chrome, Firefox, Edge)
+- A code editor, e.g. Visual Studio Code
+- (Optional) [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) extension for a local development server
 
-### Kjøre prosjektet lokalt
+### Running the Project Locally
 
-1. Klon repoet:
-   ```bash
+1. Clone the repository:
+
+```bash
    git clone <repo-url>
    cd frontend-essentials
-   ```
-2. Åpne `index.html` direkte i nettleseren, eller bruk Live Server for automatisk oppdatering.
-
-### API-nøkkel
-
-Dette prosjektet integrerer med et eksternt API (fylles ut i Dag 4). For å kjøre
-API-funksjonaliteten lokalt:
-
-1. Skaff deg en egen API-nøkkel fra tjenesteleverandøren
-2. Opprett en konfigurasjonsfil (instruksjoner kommer når API-integrasjonen er på plass)
-3. **Ikke** commit din faktiske API-nøkkel til repoet
-
-## Prosjektstruktur
-
-```
-frontend-essentials/
-├── index.html          # Hovedside
-├── css/
-│   ├── variables.css   # Design-tokens (farger, typografi, mellomrom)
-│   ├── reset.css       # CSS reset og base-stiler
-│   └── style.css       # Hovedstiler
-├── js/
-│   └── main.js         # Applikasjonslogikk
-├── assets/
-│   └── images/         # Bilder
-└── README.md
 ```
 
-## Kjente begrensninger
+2. Open `index.html` directly in your browser, or use Live Server for automatic reloading.
 
-- Prosjektet kjører kun i nettleseren; ingen backend/database.
-- (Fylles ut videre etter hvert som funksjonalitet legges til)
+### API Key
 
-## Fremtidige forbedringer
+This project integrates with an external API (to be added on Day 4). To run
+the API functionality locally:
 
-- (Fylles ut mot slutten av prosjektet)
+1. Obtain your own API key from the provider
+2. Create a configuration file (instructions will be added once the API integration is in place)
+3. Do **not** commit your actual API key to the repository
 
-## Ressurser
-
-- (Fylles ut fortløpende — dokumentasjon, artikler og verktøy brukt underveis)
+## Project Structure
