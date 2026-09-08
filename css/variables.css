@@ -1,0 +1,43 @@
+/* ==========================================================================
+   Design Tokens — hentet fra Figma-designet (Fram webshop)
+   ========================================================================== */
+
+:root {
+  /* Farger */
+  --color-cream: #f7f2de;
+  --color-dark: #0b0a08;
+  --color-red: #cb1d0b;
+  --color-green: #28bd6d;
+  --color-white: #ffffff;
+  --color-grey: #49484b;
+  --color-sky: #e1eaf0;
+
+  /* Typografi */
+  --font-display: "Frank Ruhl Libre", serif;
+  --font-body: "Arimo", sans-serif;
+
+  --fs-hero: 6rem;        /* 96px – hero-logo, kun store skjermer */
+  --fs-h1: 2.25rem;       /* 36px */
+  --fs-h2: 1.5rem;        /* 24px */
+  --fs-subheader: 1.25rem;/* 20px */
+  --fs-body-lg: 1.25rem;  /* 20px */
+  --fs-body: 1rem;        /* 16px */
+
+  /* Mellomrom */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 6rem;
+
+  /* Radius / border */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-pill: 44px;
+  --border-default: 1px solid var(--color-dark);
+
+  /* Layout */
+  --max-width: 1440px;
+  --header-height: 72px;
+}

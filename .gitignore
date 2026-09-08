@@ -1,0 +1,15 @@
+# Environment variables / API keys
+.env
+.env.local
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# Node (if used for tooling later)
+node_modules/
+dist/
