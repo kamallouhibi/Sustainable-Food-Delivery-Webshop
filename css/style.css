@@ -1,11 +1,484 @@
 /* ==========================================================================
    Fram — Hovedstiler
-   Layout, komponenter og responsivitet bygges ut fra Dag 2.
+   Layout bygget etter Figma-designet (desk/home).
+   Bruker CSS Grid/Flexbox. Mobile-first med media query for desktop.
    ========================================================================== */
 
-/* TODO: Header */
-/* TODO: Hero */
-/* TODO: Specials-kort */
-/* TODO: Steg-liste ("Slik fungerer det") */
-/* TODO: Produktkarusell */
-/* TODO: Footer og nyhetsbrev-skjema */
+body {
+  font-family: var(--font-body);
+}
+
+/* ==========================================================================
+   HEADER
+   ========================================================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-height);
+  padding: var(--space-sm) var(--space-md);
+  background-color: var(--color-cream);
+  border-bottom: var(--border-default);
+}
+
+.hamburger-btn {
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--color-dark);
+}
+
+.logo a {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: var(--fs-header-logo);
+  text-transform: uppercase;
+  letter-spacing: 0;
+  color: var(--color-dark);
+}
+
+.cart-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 47px;
+  height: 47px;
+  padding: 10px;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-green);
+  font-size: var(--fs-small);
+  color: var(--color-dark);
+}
+
+/* Mobile nav — expands below header when toggled open via JS */
+.main-nav {
+  position: absolute;
+  top: var(--header-height);
+  left: 0;
+  right: 0;
+  background-color: var(--color-cream);
+  border-bottom: var(--border-default);
+}
+
+.main-nav ul {
+  display: flex;
+  flex-direction: column;
+}
+
+.main-nav a {
+  display: block;
+  padding: var(--space-sm) var(--space-md);
+  font-size: var(--fs-body);
+  border-bottom: 1px solid rgba(11, 10, 8, 0.1);
+}
+
+/* ==========================================================================
+   HERO
+   ========================================================================== */
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 500px;
+  padding: var(--space-lg) var(--space-sm);
+  text-align: center;
+  background-color: var(--color-grey); /* fallback til bilde lastes inn */
+  background-image: linear-gradient(rgba(11,10,8,0.15), rgba(11,10,8,0.35)),
+                     url('../assets/images/hero.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.hero__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  max-width: 32rem;
+}
+
+.hero__logo {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 4.5rem;
+  text-transform: uppercase;
+  color: var(--color-white);
+  line-height: 1;
+}
+
+.hero__tagline {
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  color: var(--color-white);
+  letter-spacing: 0.02em;
+}
+
+/* ==========================================================================
+   SPECIALS
+   ========================================================================== */
+.specials {
+  display: flex;
+  flex-direction: column;
+}
+
+.special-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-lg) var(--space-md);
+  text-align: center;
+  border-bottom: var(--border-default);
+}
+
+.special-card__title {
+  font-size: var(--fs-h1);
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+}
+
+.special-card__subtitle {
+  font-size: var(--fs-subheader);
+}
+
+.special-card__image {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  background-color: var(--color-sky); /* fallback til ekte bilde er lagt til */
+}
+
+.special-card__text {
+  font-size: var(--fs-subheader);
+  max-width: 26rem;
+}
+
+/* ==========================================================================
+   BUTTONS
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  height: 44px;
+  padding: 10px var(--space-sm);
+  border-radius: var(--radius-md);
+  font-size: var(--fs-body);
+  text-align: center;
+  transition: opacity 0.15s ease;
+}
+
+.btn:hover {
+  opacity: 0.85;
+}
+
+.btn--primary {
+  width: 100%;
+  background-color: var(--color-red);
+  color: var(--color-white);
+}
+
+.btn--add-basket {
+  border-radius: var(--radius-pill);
+  background-color: var(--color-dark);
+  color: var(--color-white);
+  font-size: var(--fs-body);
+}
+
+.btn--form {
+  width: 100%;
+  background-color: var(--color-sky);
+  color: var(--color-dark);
+}
+
+/* ==========================================================================
+   HOW IT WORKS
+   ========================================================================== */
+.how-it-works {
+  background-color: var(--color-cream);
+  border-top: var(--border-default);
+  border-bottom: var(--border-default);
+}
+
+.how-it-works__title {
+  padding: var(--space-md);
+  font-size: var(--fs-h1);
+  text-transform: uppercase;
+  text-align: center;
+  border-bottom: var(--border-default);
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  border-bottom: var(--border-default);
+}
+
+.step:last-child {
+  border-bottom: none;
+}
+
+.step__title {
+  font-size: var(--fs-subheader);
+  text-transform: uppercase;
+}
+
+.step__details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  font-size: var(--fs-body);
+}
+
+.step__details a {
+  color: var(--color-grey);
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   PRODUCE CAROUSEL
+   ========================================================================== */
+.produce-carousel {
+  padding: var(--space-lg) var(--space-md);
+}
+
+.produce-carousel h2 {
+  font-size: var(--fs-h1);
+  text-transform: uppercase;
+  margin-bottom: var(--space-md);
+}
+
+.product-list {
+  display: flex;
+  gap: var(--space-md);
+  overflow-x: auto;
+  padding-bottom: var(--space-sm);
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  flex: 0 0 240px;
+  scroll-snap-align: start;
+}
+
+.product-card__image-wrap {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  height: 220px;
+  padding: var(--space-sm);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-sky); /* fallback til ekte bilde er lagt til */
+  overflow: hidden;
+}
+
+.product-card__image-wrap img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.product-card__info {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-sm);
+}
+
+.product-card__name {
+  font-size: 1.5rem;
+}
+
+.product-card__qty {
+  font-size: var(--fs-subheader);
+  color: var(--color-grey);
+}
+
+.product-card__price {
+  font-size: 1.5rem;
+  white-space: nowrap;
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+.site-footer {
+  padding: var(--space-lg) var(--space-md);
+  background-color: var(--color-red);
+  color: var(--color-white);
+}
+
+.footer-logo {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  margin-bottom: var(--space-md);
+}
+
+.newsletter {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  max-width: 28rem;
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-white);
+}
+
+.newsletter h2 {
+  font-size: var(--fs-h1);
+  text-transform: uppercase;
+}
+
+.newsletter p {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: var(--fs-accent);
+}
+
+.newsletter-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.form-field input {
+  width: 100%;
+  height: 44px;
+  padding: 10px var(--space-sm);
+  border-radius: var(--radius-sm);
+  border: none;
+  background-color: var(--color-white);
+  color: var(--color-dark);
+  font-size: var(--fs-body);
+}
+
+.form-field input::placeholder {
+  color: var(--color-grey);
+}
+
+/* ==========================================================================
+   RESPONSIVE — Desktop (matcher Figma desk/home fra 1024px)
+   ========================================================================== */
+@media (min-width: 1024px) {
+  .site-header {
+    padding: var(--space-sm) 2.6rem;
+  }
+
+  .main-nav[hidden] {
+    display: block; /* på desktop vises navigasjonen alltid, uavhengig av hidden-attributtet */
+  }
+
+  .main-nav {
+    position: static;
+    border-bottom: none;
+  }
+
+  .hamburger-btn {
+    display: none; /* hamburgermeny er kun for mobil */
+  }
+
+  .main-nav ul {
+    flex-direction: row;
+    gap: var(--space-md);
+  }
+
+  .main-nav a {
+    padding: 0;
+    border-bottom: none;
+  }
+
+  .hero {
+    height: 952px; /* fast høyde fra Figma-spesifikasjonen (desk/home) */
+  }
+
+  .hero__logo {
+    font-size: var(--fs-hero-logo);
+  }
+
+  .hero__tagline {
+    font-size: var(--fs-h1);
+  }
+
+  .specials {
+    flex-direction: row;
+  }
+
+  .special-card {
+    flex: 1;
+    padding: 4rem 8rem;
+    border-bottom: none;
+  }
+
+  .special-card:first-child {
+    border-right: var(--border-default);
+  }
+
+  .special-card__image {
+    height: 321px;
+  }
+
+  .how-it-works {
+    display: flex;
+  }
+
+  .how-it-works__title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 475px;
+    flex-shrink: 0;
+    border-bottom: none;
+    border-right: var(--border-default);
+    padding: var(--space-md) 2.6rem;
+  }
+
+  .steps {
+    flex: 1;
+  }
+
+  .step {
+    flex-direction: row;
+    align-items: center;
+    gap: 2.5rem;
+    padding: 2rem 2.6rem;
+  }
+
+  .step__title {
+    width: 320px;
+    flex-shrink: 0;
+  }
+
+  .product-list {
+    overflow-x: visible;
+  }
+
+  .product-card {
+    flex: 1;
+  }
+
+  .newsletter {
+    border-top: none;
+    padding-top: 0;
+  }
+}

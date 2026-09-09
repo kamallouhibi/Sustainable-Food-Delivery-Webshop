@@ -2,6 +2,8 @@
    Design Tokens — hentet fra Figma-designet (Fram webshop)
    ========================================================================== */
 
+@import url('https://fonts.googleapis.com/css2?family=Arimo:wght@400;700&family=Frank+Ruhl+Libre:wght@300;400&display=swap');
+
 :root {
   /* Farger */
   --color-cream: #f7f2de;
@@ -16,12 +18,15 @@
   --font-display: "Frank Ruhl Libre", serif;
   --font-body: "Arimo", sans-serif;
 
-  --fs-hero: 6rem;        /* 96px – hero-logo, kun store skjermer */
-  --fs-h1: 2.25rem;       /* 36px */
-  --fs-h2: 1.5rem;        /* 24px */
-  --fs-subheader: 1.25rem;/* 20px */
-  --fs-body-lg: 1.25rem;  /* 20px */
-  --fs-body: 1rem;        /* 16px */
+  --fs-hero-logo: 12.5rem;  /* 200px – hero-logo (desktop) */
+  --fs-header-logo: 2rem;   /* 32px – header/nav logo */
+  --fs-footer-logo: 3rem;   /* 48px – footer logo */
+  --fs-h1: 2.25rem;         /* 36px – seksjonsoverskrifter */
+  --fs-accent: 1.5rem;      /* 24px – Frank Ruhl Libre-tekst i footer */
+  --fs-subheader: 1.25rem;  /* 20px */
+  --fs-body-lg: 1.25rem;    /* 20px */
+  --fs-body: 1rem;          /* 16px */
+  --fs-small: 0.875rem;     /* 14px */
 
   /* Mellomrom */
   --space-xs: 0.5rem;
