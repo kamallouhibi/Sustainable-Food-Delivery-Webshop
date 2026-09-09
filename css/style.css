@@ -18,6 +18,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: var(--space-md);
   height: var(--header-height);
   padding: var(--space-sm) var(--space-md);
   background-color: var(--color-cream);
@@ -279,6 +280,7 @@ body {
 
 .product-card__image-wrap {
   position: relative;
+  isolation: isolate; /* skaper egen stacking context, så z-index under kun gjelder lokalt */
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
@@ -392,6 +394,16 @@ body {
   .main-nav {
     position: static;
     border-bottom: none;
+    order: 2;
+    margin-left: auto; /* skyver nav (og cart etter den) helt til høyre */
+  }
+
+  .cart-btn {
+    order: 3;
+  }
+
+  .logo {
+    order: 1;
   }
 
   .hamburger-btn {
