@@ -380,6 +380,83 @@ body {
 }
 
 /* ==========================================================================
+   PRODUCE PAGE (products.html)
+   ========================================================================== */
+.produce-page {
+  padding: var(--space-lg) var(--space-md);
+}
+
+.produce-page__intro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.produce-page__intro h1 {
+  font-size: var(--fs-h1);
+  text-transform: uppercase;
+}
+
+.produce-page__intro p {
+  font-size: var(--fs-subheader);
+  max-width: 37rem;
+}
+
+.product-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+}
+
+.product-grid li.product-card {
+  flex: 1 1 280px;
+  max-width: 500px;
+  min-width: 280px;
+}
+
+.product-grid__loading,
+.product-grid__empty {
+  font-size: var(--fs-body);
+  color: var(--color-grey);
+  padding: var(--space-md) 0;
+}
+
+/* ==========================================================================
+   PARTNER FARMS (kart-seksjon)
+   ========================================================================== */
+.partner-farms {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-cream);
+  border-top: var(--border-default);
+}
+
+.partner-farms h2 {
+  padding: var(--space-md);
+  font-size: var(--fs-h1);
+  text-transform: uppercase;
+  text-align: center;
+  border-bottom: var(--border-default);
+}
+
+.partner-farms__map {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 240px;
+  margin: var(--space-md);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  background-color: var(--color-sky);
+  color: var(--color-grey);
+  text-align: center;
+  font-size: var(--fs-body);
+}
+
+
+
+/* ==========================================================================
    RESPONSIVE — Desktop (matcher Figma desk/home fra 1024px)
    ========================================================================== */
 @media (min-width: 1024px) {
@@ -487,6 +564,30 @@ body {
 
   .product-card {
     flex: 1;
+  }
+
+    .produce-page {
+    padding: var(--space-lg) 2.6rem;
+  }
+
+  .partner-farms {
+    flex-direction: row;
+  }
+
+  .partner-farms h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 475px;
+    flex-shrink: 0;
+    border-bottom: none;
+    border-right: var(--border-default);
+    padding: var(--space-md) 2.6rem;
+  }
+
+  .partner-farms__map {
+    flex: 1;
+    margin: var(--space-lg);
   }
 
   .newsletter {
