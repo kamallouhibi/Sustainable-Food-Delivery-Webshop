@@ -1,3 +1,4 @@
+````
 # Fram — Sustainable Food Delivery Webshop
 
 Project assignment for PRO1001 Frontend Essentials. A website for a sustainable
@@ -19,8 +20,7 @@ The website implements a Figma design provided by the client.
   cards, a "how it works" step list, a popular produce section, and a footer
   with a newsletter form.
 - **Product listing page** (`products.html`) — displays all available
-  produce along with a "partnering farms" section (currently a placeholder,
-  see "Planned" below).
+  produce, along with an interactive map of partnering farms (see below).
 - **Contact page with AI chatbot** (`contact.html`) — a chat interface
   integrated with the OpenAI Chat Completions API (`gpt-4o-mini`). Sends
   user messages asynchronously (`fetch` + `async/await`) and renders the
@@ -31,6 +31,11 @@ The website implements a Figma design provided by the client.
     error banner ("Failed to connect. Wait and try again later.") rather
     than failing silently.
   - An AI-disclosure notice shown permanently under the chat input.
+- **Interactive partner farms map** (`products.html`) — a live map built
+  with Leaflet.js and OpenStreetMap tiles (no API key required), showing
+  markers with popups for each partnering farm. Includes error handling:
+  if the map tiles fail to load, a visible error message is shown instead
+  of a blank map.
 - **Dynamic product rendering** — product data lives as an array of objects
   in `js/products-data.js`. `js/products.js` renders each product card to
   the DOM using `Array.map()` and template literals, so new products can be
@@ -53,7 +58,6 @@ The website implements a Figma design provided by the client.
 
 - Client-side form validation (newsletter signup form)
 - Working hamburger menu toggle (currently static HTML/CSS only; needs JS)
-- Live map integration on `products.html` (currently a static placeholder)
 
 ## Getting Started
 
@@ -72,12 +76,10 @@ The website implements a Figma design provided by the client.
 ### Running the Project Locally
 
 1. Clone the repository:
-
-```bash
+   ```bash
    git clone <repo-url>
    cd frontend-essentials
-```
-
+   ```
 2. Set up your API key (see "API Key" section below).
 3. Open the project with Live Server (right-click `index.html` →
    "Open with Live Server").
@@ -90,11 +92,9 @@ To run it with real responses:
 1. Copy `js/config.example.js` and rename the copy to `js/config.js`.
 2. Get an API key at [platform.openai.com/api-keys](https://platform.openai.com/api-keys).
 3. Open `js/config.js` and replace the placeholder with your real key:
-
-```js
-const OPENAI_API_KEY = "your-real-key-here";
-```
-
+   ```js
+   const OPENAI_API_KEY = "your-real-key-here";
+   ```
 4. `js/config.js` is listed in `.gitignore` and will never be committed.
 
 If you skip this step, the chatbot still works — it will show the built-in
@@ -108,7 +108,7 @@ demonstrates the error-handling behaviour described above.
 ```
 frontend-essentials/
 ├── index.html             # Main page
-├── products.html          # Product listing page
+├── products.html          # Product listing page (includes partner farms map)
 ├── contact.html           # Contact page with AI chatbot
 ├── css/
 │   ├── variables.css      # Design tokens (colors, typography, spacing)
@@ -119,6 +119,7 @@ frontend-essentials/
 │   ├── products-data.js   # Product data (array of objects)
 │   ├── products.js         # Renders product cards to the DOM
 │   ├── chat.js              # OpenAI chatbot logic (fetch, error handling, UI states)
+│   ├── map.js                # Leaflet map logic (partner farm markers, error handling)
 │   ├── config.example.js  # API key template (committed)
 │   └── config.js            # Your real API key (gitignored, not committed)
 ├── assets/
@@ -131,14 +132,14 @@ frontend-essentials/
 - The project runs entirely in the browser; no backend or database.
 - The hamburger menu is visually styled but not yet functional — opening it
   requires JavaScript, which is planned for a later stage.
-- The map on the product listing page is a static placeholder pending a
-  real map API integration.
 - No form validation yet on the newsletter signup form.
 - The chatbot's API key lives in client-side JavaScript, which is inherently
   visible to anyone inspecting network requests. This is a known limitation
   of calling a paid third-party API directly from a static frontend with no
   backend, and matches the assignment's constraints (see the Reflective
   Journal for a fuller discussion of this and other ethical considerations).
+- The partner farm coordinates on the map are illustrative example locations,
+  not verified real farm addresses.
 
 ## Future Improvements
 
@@ -156,4 +157,8 @@ frontend-essentials/
 - [Google Fonts](https://fonts.google.com/) for Frank Ruhl Libre and Arimo.
 - [OpenAI API documentation](https://platform.openai.com/docs/api-reference/chat)
   for the Chat Completions endpoint used by the chatbot.
+- [Leaflet.js documentation](https://leafletjs.com/) and
+  [OpenStreetMap](https://www.openstreetmap.org/copyright) tile data for the
+  interactive partner farms map.
 - (Updated continuously — documentation, articles, and tools used along the way)
+````
