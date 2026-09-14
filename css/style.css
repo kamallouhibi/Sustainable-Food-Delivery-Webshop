@@ -455,6 +455,161 @@ body {
 }
 
 
+/* ==========================================================================
+   CHAT (contact.html — AI-assistent)
+   Struktur og mål verifisert direkte mot Figma sine tre chat-tilstander
+   (start / conversation / error), node 7046:505.
+   ========================================================================== */
+.chat-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-height: 500px;
+  padding: 24px 18px;
+}
+
+.chat-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: var(--space-sm);
+}
+
+/* Bot-melding: "Fram"-label ligger UTENFOR boblen, ikke inni (Figma-spec) */
+.chat-message--bot {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.chat-message--bot .chat-message__label {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: var(--fs-body);
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+.chat-message--bot .chat-message__bubble {
+  background-color: var(--color-cream);
+  padding: 10px;
+  border-radius: 24px; /* pille-form, jf. Figma sin "fram text"-boble */
+  font-size: var(--fs-body);
+}
+
+/* Bruker-melding: sky-boble, 12px radius (ikke pille), høyrejustert */
+.chat-message--user {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.chat-message--user .chat-message__bubble {
+  max-width: 22rem;
+  background-color: var(--color-sky);
+  padding: 12px;
+  border-radius: 12px;
+  font-size: var(--fs-body);
+}
+
+/* "Tenker"-indikator: label + enkel prikke-animasjon
+   (Figma bruker et animert SVG-ikon; vi bruker CSS-animerte prikker
+   som en pragmatisk, avhengighetsfri tilnærming til samme idé) */
+.chat-typing {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.chat-typing .chat-message__label {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: var(--fs-body);
+  text-transform: uppercase;
+}
+
+.chat-typing__dots {
+  display: flex;
+  gap: 4px;
+  padding: 10px;
+}
+
+.chat-typing__dots span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-grey);
+  animation: chat-typing-bounce 1.2s infinite ease-in-out;
+}
+
+.chat-typing__dots span:nth-child(2) { animation-delay: 0.2s; }
+.chat-typing__dots span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes chat-typing-bounce {
+  0%, 80%, 100% { opacity: 0.3; transform: translateY(0); }
+  40% { opacity: 1; transform: translateY(-3px); }
+}
+
+/* Feiltilstand: fast rød boks over input-feltet, ikke en knapp i meldingslisten
+   (Figma-spec: "Failed to connect. Wait and try again later.") */
+.chat-error {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  height: 34px;
+  padding: 10px;
+  border: 1px solid var(--color-red);
+  border-radius: var(--radius-sm);
+  color: var(--color-red);
+  font-size: var(--fs-body);
+  text-align: center;
+}
+
+.chat-error--visible {
+  display: flex;
+}
+
+.chat-input-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+}
+
+.chat-input {
+  flex: 1;
+  min-height: 113px;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  background-color: var(--color-sky);
+  color: var(--color-dark);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  resize: vertical;
+}
+
+.chat-send-btn {
+  flex-shrink: 0;
+  width: 60px;
+  height: 44px;
+  border-radius: 16px;
+  background-color: var(--color-red);
+  color: var(--color-white);
+  font-size: var(--fs-subheader);
+}
+
+.chat-send-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.chat-disclaimer {
+  font-size: var(--fs-small);
+  color: var(--color-grey);
+}
+
+
 
 /* ==========================================================================
    RESPONSIVE — Desktop (matcher Figma desk/home fra 1024px)
@@ -589,6 +744,15 @@ body {
     flex: 1;
     margin: var(--space-lg);
   }
+
+
+  .chat-panel {
+    max-width: 900px;
+    margin: 0 auto;
+    min-height: 700px;
+    padding: var(--space-lg) var(--space-md);
+  }
+  
 
   .newsletter {
     border-top: none;

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact us — Fram</title>
+  <meta name="description" content="Chat with Fram's assistant for help with orders, products, or delivery." />
+
+  <link rel="icon" href="data:," />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link visually-hidden">Skip to main content</a>
+
+  <!-- ==========================================================================
+       HEADER (identisk med index.html/products.html for konsistent navigasjon)
+       ========================================================================== -->
+  <header class="site-header">
+    <button class="hamburger-btn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="main-nav">
+      <span class="hamburger-icon" aria-hidden="true">☰</span>
+    </button>
+
+    <div class="logo">
+      <a href="index.html">Fram</a>
+    </div>
+
+    <a href="#" class="cart-btn" aria-label="Shopping cart, 0 items">
+      <span aria-hidden="true">0</span>
+    </a>
+
+    <nav id="main-nav" class="main-nav" aria-label="Main navigation" hidden>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="contact.html" aria-current="page">Contact us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+
+    <!-- ==========================================================================
+         CHAT (AI-assistent — se js/chat.js for OpenAI-integrasjonen)
+         ========================================================================== -->
+    <section id="chat-panel" class="chat-panel" aria-label="Chat with Fram's assistant">
+
+      <ul id="chat-messages" class="chat-messages" aria-live="polite">
+        <li class="chat-message chat-message--bot">
+          <span class="chat-message__label">Fram</span>
+          <span class="chat-message__bubble">What can I help you with today?</span>
+        </li>
+      </ul>
+
+      <p id="chat-error" class="chat-error" role="alert">
+        Failed to connect. Wait and try again later.
+      </p>
+
+      <div class="chat-input-row">
+        <label for="chat-input" class="visually-hidden">Type your message</label>
+        <textarea
+          id="chat-input"
+          class="chat-input"
+          rows="2"
+          placeholder="Ask about our produce, delivery, or partnering farms…"
+        ></textarea>
+        <button id="chat-send-btn" type="button" class="chat-send-btn" aria-label="Send message">
+          <span aria-hidden="true">↑</span>
+        </button>
+      </div>
+
+      <p class="chat-disclaimer">
+        This assistant is AI-generated and may occasionally provide inaccurate
+        information. Please verify important details independently.
+      </p>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       FOOTER (identisk med index.html)
+       ========================================================================== -->
+  <footer class="site-footer">
+    <p class="footer-logo">Fram</p>
+
+    <div class="newsletter">
+      <h2>Stay updated</h2>
+      <p>Sign up for our newsletter to be the first to know about new produce or other exciting news!</p>
+
+      <form class="newsletter-form" novalidate>
+        <div class="form-field">
+          <label for="newsletter-name" class="visually-hidden">First name</label>
+          <input type="text" id="newsletter-name" name="firstName" placeholder="First name" autocomplete="given-name" required />
+        </div>
+        <div class="form-field">
+          <label for="newsletter-email" class="visually-hidden">E-mail address</label>
+          <input type="email" id="newsletter-email" name="email" placeholder="E-mail address" autocomplete="email" required />
+        </div>
+        <button type="submit" class="btn btn--form">Send</button>
+      </form>
+    </div>
+  </footer>
+
+  <!-- config.js inneholder API-nøkkelen og lastes FØR chat.js. -->
+  <!-- Filen er gitignored - kopier config.example.js og legg inn din egen nøkkel. -->
+  <script src="js/config.js"></script>
+  <script src="js/chat.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
