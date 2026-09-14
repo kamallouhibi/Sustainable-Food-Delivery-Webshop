@@ -21,6 +21,16 @@ The website implements a Figma design provided by the client.
 - **Product listing page** (`products.html`) — displays all available
   produce along with a "partnering farms" section (currently a placeholder,
   see "Planned" below).
+- **Contact page with AI chatbot** (`contact.html`) — a chat interface
+  integrated with the OpenAI Chat Completions API (`gpt-4o-mini`). Sends
+  user messages asynchronously (`fetch` + `async/await`) and renders the
+  assistant's replies. Includes:
+  - A visible loading state (animated "typing" indicator) while waiting
+    for a response, and a send/stop toggle on the send button.
+  - Explicit error handling: network or API failures show a persistent
+    error banner ("Failed to connect. Wait and try again later.") rather
+    than failing silently.
+  - An AI-disclosure notice shown permanently under the chat input.
 - **Dynamic product rendering** — product data lives as an array of objects
   in `js/products-data.js`. `js/products.js` renders each product card to
   the DOM using `Array.map()` and template literals, so new products can be
@@ -28,23 +38,22 @@ The website implements a Figma design provided by the client.
 - **Responsive layout** — built with CSS Flexbox. Mobile-first: sections stack
   vertically by default, and switch to the desktop layout (side-by-side
   cards, horizontal step list) at a 1024px breakpoint, matching the Figma
-  `desk/home` and `desk/produce` specifications.
+  `desk/home`, `desk/produce`, and chat specifications.
 - **Design tokens** — colors, typography (Frank Ruhl Libre + Arimo via Google
   Fonts), spacing, and border-radius values extracted directly from the Figma
   file and defined as CSS custom properties in `css/variables.css`.
 - **Real images** — all product and hero photography exported from the
   Figma file and optimized (resized/compressed) for web performance.
 - **Accessibility basics** — semantic landmarks, ARIA labels on icon-only
-  controls, a skip-to-content link, and a visible focus ring for keyboard
-  navigation.
+  controls, a skip-to-content link, a visible focus ring for keyboard
+  navigation, and `aria-live`/`role="alert"` regions in the chat so screen
+  readers announce new messages and errors.
 
 ### Planned (not yet implemented)
 
-- Contact form / chatbot for customer inquiries
-- Integration with an external API (OpenAI or third-party) — the map on
-  `products.html` is a static placeholder reserved for this
-- Client-side form validation
+- Client-side form validation (newsletter signup form)
 - Working hamburger menu toggle (currently static HTML/CSS only; needs JS)
+- Live map integration on `products.html` (currently a static placeholder)
 
 ## Getting Started
 
@@ -52,7 +61,13 @@ The website implements a Figma design provided by the client.
 
 - A modern web browser (Chrome, Firefox, Edge)
 - A code editor, e.g. Visual Studio Code
-- (Optional) [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) extension for a local development server with auto-reload
+- [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)
+  extension — **required**, not just optional, from this point on: the
+  chatbot's `fetch()` calls to the OpenAI API will not work correctly when
+  the page is opened directly via `file://`.
+- An OpenAI API key (see below) if you want to test the chatbot with real
+  responses. Without one, the chatbot still works correctly and demonstrates
+  its error-handling path (see "API Key" below).
 
 ### Running the Project Locally
 
@@ -63,34 +78,51 @@ The website implements a Figma design provided by the client.
    cd frontend-essentials
 ```
 
-2. Open `index.html` directly in your browser, or use Live Server for
-   automatic reloading on save. Live Server is recommended, since a future
-   API integration (Day 4) will require the page to be served over `http://`
-   rather than opened via `file://`.
+2. Set up your API key (see "API Key" section below).
+3. Open the project with Live Server (right-click `index.html` →
+   "Open with Live Server").
 
 ### API Key
 
-This project will integrate with an external API (planned for Day 4). Once
-implemented, instructions for obtaining and configuring your own API key will
-be added here. **Do not** commit any actual API key to this repository —
-`.gitignore` is already configured to exclude `.env` files.
+The chatbot on `contact.html` calls the OpenAI API directly from the browser.
+To run it with real responses:
+
+1. Copy `js/config.example.js` and rename the copy to `js/config.js`.
+2. Get an API key at [platform.openai.com/api-keys](https://platform.openai.com/api-keys).
+3. Open `js/config.js` and replace the placeholder with your real key:
+
+```js
+const OPENAI_API_KEY = "your-real-key-here";
+```
+
+4. `js/config.js` is listed in `.gitignore` and will never be committed.
+
+If you skip this step, the chatbot still works — it will show the built-in
+error banner ("Failed to connect...") instead of a real AI response, which
+demonstrates the error-handling behaviour described above.
+
+**Do not** commit your actual API key to this repository.
 
 ## Project Structure
 
 ```
 frontend-essentials/
-├── index.html            # Main page
+├── index.html             # Main page
 ├── products.html          # Product listing page
+├── contact.html           # Contact page with AI chatbot
 ├── css/
-│   ├── variables.css     # Design tokens (colors, typography, spacing)
-│   ├── reset.css         # CSS reset and base styles
-│   └── style.css         # Main stylesheet (layout, components, responsiveness)
+│   ├── variables.css      # Design tokens (colors, typography, spacing)
+│   ├── reset.css          # CSS reset and base styles
+│   └── style.css          # Main stylesheet (layout, components, responsiveness)
 ├── js/
-│   ├── main.js            # Shared application logic
-│   ├── products-data.js  # Product data (array of objects)
-│   └── products.js        # Renders product cards to the DOM
+│   ├── main.js             # Shared application logic
+│   ├── products-data.js   # Product data (array of objects)
+│   ├── products.js         # Renders product cards to the DOM
+│   ├── chat.js              # OpenAI chatbot logic (fetch, error handling, UI states)
+│   ├── config.example.js  # API key template (committed)
+│   └── config.js            # Your real API key (gitignored, not committed)
 ├── assets/
-│   └── images/             # Product and hero photography
+│   └── images/              # Product and hero photography
 └── README.md
 ```
 
@@ -101,15 +133,27 @@ frontend-essentials/
   requires JavaScript, which is planned for a later stage.
 - The map on the product listing page is a static placeholder pending a
   real map API integration.
-- No form validation or external API integration yet.
+- No form validation yet on the newsletter signup form.
+- The chatbot's API key lives in client-side JavaScript, which is inherently
+  visible to anyone inspecting network requests. This is a known limitation
+  of calling a paid third-party API directly from a static frontend with no
+  backend, and matches the assignment's constraints (see the Reflective
+  Journal for a fuller discussion of this and other ethical considerations).
 
 ## Future Improvements
 
-- (To be expanded as the remaining features above are implemented)
+- Add a lightweight backend proxy for the OpenAI API key, so it is never
+  exposed client-side.
+- Persist chat history in `localStorage` so a page refresh doesn't lose
+  the conversation.
+- Replace the CSS-animated typing indicator with the exact animated icon
+  from the Figma design.
 
 ## Resources
 
 - Figma design file (provided by course), used as the visual specification
   for layout, colors, typography, and component structure.
 - [Google Fonts](https://fonts.google.com/) for Frank Ruhl Libre and Arimo.
+- [OpenAI API documentation](https://platform.openai.com/docs/api-reference/chat)
+  for the Chat Completions endpoint used by the chatbot.
 - (Updated continuously — documentation, articles, and tools used along the way)
