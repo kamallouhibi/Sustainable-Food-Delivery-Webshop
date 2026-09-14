@@ -441,17 +441,11 @@ body {
 }
 
 .partner-farms__map {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   min-height: 240px;
   margin: var(--space-md);
-  padding: var(--space-md);
   border-radius: var(--radius-md);
-  background-color: var(--color-sky);
-  color: var(--color-grey);
-  text-align: center;
-  font-size: var(--fs-body);
+  background-color: var(--color-sky); /* fallback synlig mens kartet laster */
+  overflow: hidden; /* runder av Leaflet-fliser til boksens border-radius */
 }
 
 
