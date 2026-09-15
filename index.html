@@ -177,22 +177,20 @@
   <footer class="site-footer">
     <p class="footer-logo">Fram</p>
 
-    <div class="newsletter">
-      <h2>Stay updated</h2>
-      <p>Sign up for our newsletter to be the first to know about new produce or other exciting news!</p>
-
-      <form class="newsletter-form" novalidate>
-        <div class="form-field">
-          <label for="newsletter-name" class="visually-hidden">First name</label>
-          <input type="text" id="newsletter-name" name="firstName" placeholder="First name" autocomplete="given-name" required />
-        </div>
-        <div class="form-field">
-          <label for="newsletter-email" class="visually-hidden">E-mail address</label>
-          <input type="email" id="newsletter-email" name="email" placeholder="E-mail address" autocomplete="email" required />
-        </div>
-        <button type="submit" class="btn btn--form">Send</button>
-      </form>
-    </div>
+    <form id="newsletter-form" class="newsletter-form" novalidate>
+  <div class="form-field">
+    <label for="newsletter-name" class="visually-hidden">First name</label>
+    <input type="text" id="newsletter-name" name="firstName" placeholder="First name" autocomplete="given-name" required aria-describedby="newsletter-name-error" />
+    <span id="newsletter-name-error" class="form-error" role="alert"></span>
+  </div>
+  <div class="form-field">
+    <label for="newsletter-email" class="visually-hidden">E-mail address</label>
+    <input type="email" id="newsletter-email" name="email" placeholder="E-mail address" autocomplete="email" required aria-describedby="newsletter-email-error" />
+    <span id="newsletter-email-error" class="form-error" role="alert"></span>
+  </div>
+  <button type="submit" class="btn btn--form">Send</button>
+  <p id="newsletter-success" class="newsletter-success" role="status"></p>
+</form>
   </footer>
 
   <script src="js/main.js"></script>

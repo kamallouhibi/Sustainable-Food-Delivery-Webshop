@@ -379,6 +379,25 @@ body {
   color: var(--color-grey);
 }
 
+.form-field input[aria-invalid="true"] {
+  outline: 2px solid var(--color-red);
+  outline-offset: -2px;
+}
+
+.form-error {
+  display: block;
+  margin-top: 4px;
+  font-size: var(--fs-small);
+  color: var(--color-white);
+  font-weight: 700;
+}
+
+.newsletter-success {
+  font-size: var(--fs-body);
+  color: var(--color-white);
+  font-weight: 700;
+}
+
 /* ==========================================================================
    PRODUCE PAGE (products.html)
    ========================================================================== */
