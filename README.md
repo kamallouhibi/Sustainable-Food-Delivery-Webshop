@@ -1,4 +1,3 @@
-````
 # Fram — Sustainable Food Delivery Webshop
 
 Project assignment for PRO1001 Frontend Essentials. A website for a sustainable
@@ -53,11 +52,19 @@ The website implements a Figma design provided by the client.
   controls, a skip-to-content link, a visible focus ring for keyboard
   navigation, and `aria-live`/`role="alert"` regions in the chat so screen
   readers announce new messages and errors.
+- **Client-side form validation** — the newsletter signup form (present in
+  the footer of every page) validates the first name and e-mail fields on
+  blur and on submit, showing inline error messages and setting
+  `aria-invalid` for screen readers. A visible success message confirms
+  submission (there is no backend, so nothing is actually sent anywhere).
+- **Functional hamburger menu** — on mobile, the hamburger button toggles
+  the navigation open/closed and keeps `aria-expanded` in sync for screen
+  readers; selecting a link closes the menu automatically.
 
 ### Planned (not yet implemented)
 
-- Client-side form validation (newsletter signup form)
-- Working hamburger menu toggle (currently static HTML/CSS only; needs JS)
+- (All core requirements are now implemented — see "Future Improvements"
+  below for optional enhancements beyond the assignment scope.)
 
 ## Getting Started
 
@@ -76,10 +83,12 @@ The website implements a Figma design provided by the client.
 ### Running the Project Locally
 
 1. Clone the repository:
-   ```bash
+
+```bash
    git clone <repo-url>
    cd frontend-essentials
-   ```
+```
+
 2. Set up your API key (see "API Key" section below).
 3. Open the project with Live Server (right-click `index.html` →
    "Open with Live Server").
@@ -92,9 +101,11 @@ To run it with real responses:
 1. Copy `js/config.example.js` and rename the copy to `js/config.js`.
 2. Get an API key at [platform.openai.com/api-keys](https://platform.openai.com/api-keys).
 3. Open `js/config.js` and replace the placeholder with your real key:
-   ```js
-   const OPENAI_API_KEY = "your-real-key-here";
-   ```
+
+```js
+const OPENAI_API_KEY = "your-real-key-here";
+```
+
 4. `js/config.js` is listed in `.gitignore` and will never be committed.
 
 If you skip this step, the chatbot still works — it will show the built-in
@@ -115,7 +126,7 @@ frontend-essentials/
 │   ├── reset.css          # CSS reset and base styles
 │   └── style.css          # Main stylesheet (layout, components, responsiveness)
 ├── js/
-│   ├── main.js             # Shared application logic
+│   ├── main.js             # Hamburger menu + newsletter form validation (all pages)
 │   ├── products-data.js   # Product data (array of objects)
 │   ├── products.js         # Renders product cards to the DOM
 │   ├── chat.js              # OpenAI chatbot logic (fetch, error handling, UI states)
@@ -130,9 +141,6 @@ frontend-essentials/
 ## Known Limitations
 
 - The project runs entirely in the browser; no backend or database.
-- The hamburger menu is visually styled but not yet functional — opening it
-  requires JavaScript, which is planned for a later stage.
-- No form validation yet on the newsletter signup form.
 - The chatbot's API key lives in client-side JavaScript, which is inherently
   visible to anyone inspecting network requests. This is a known limitation
   of calling a paid third-party API directly from a static frontend with no
@@ -140,6 +148,9 @@ frontend-essentials/
   Journal for a fuller discussion of this and other ethical considerations).
 - The partner farm coordinates on the map are illustrative example locations,
   not verified real farm addresses.
+- The newsletter form's "success" message is a visual-only confirmation;
+  no data is actually sent or stored anywhere, since the project has no
+  backend.
 
 ## Future Improvements
 
@@ -149,6 +160,7 @@ frontend-essentials/
   the conversation.
 - Replace the CSS-animated typing indicator with the exact animated icon
   from the Figma design.
+- Run Lighthouse audits and address any performance/accessibility findings.
 
 ## Resources
 
@@ -161,4 +173,3 @@ frontend-essentials/
   [OpenStreetMap](https://www.openstreetmap.org/copyright) tile data for the
   interactive partner farms map.
 - (Updated continuously — documentation, articles, and tools used along the way)
-````
