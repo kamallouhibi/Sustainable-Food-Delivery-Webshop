@@ -83,12 +83,10 @@ The website implements a Figma design provided by the client.
 ### Running the Project Locally
 
 1. Clone the repository:
-
 ```bash
    git clone <repo-url>
    cd frontend-essentials
 ```
-
 2. Set up your API key (see "API Key" section below).
 3. Open the project with Live Server (right-click `index.html` →
    "Open with Live Server").
@@ -101,11 +99,9 @@ To run it with real responses:
 1. Copy `js/config.example.js` and rename the copy to `js/config.js`.
 2. Get an API key at [platform.openai.com/api-keys](https://platform.openai.com/api-keys).
 3. Open `js/config.js` and replace the placeholder with your real key:
-
 ```js
-const OPENAI_API_KEY = "your-real-key-here";
+   const OPENAI_API_KEY = "your-real-key-here";
 ```
-
 4. `js/config.js` is listed in `.gitignore` and will never be committed.
 
 If you skip this step, the chatbot still works — it will show the built-in
@@ -116,27 +112,26 @@ demonstrates the error-handling behaviour described above.
 
 ## Project Structure
 
-```
 frontend-essentials/
-├── index.html             # Main page
-├── products.html          # Product listing page (includes partner farms map)
-├── contact.html           # Contact page with AI chatbot
+├── index.html # Main page
+├── products.html # Product listing page (includes partner farms map)
+├── contact.html # Contact page with AI chatbot
 ├── css/
-│   ├── variables.css      # Design tokens (colors, typography, spacing)
-│   ├── reset.css          # CSS reset and base styles
-│   └── style.css          # Main stylesheet (layout, components, responsiveness)
+│ ├── variables.css # Design tokens (colors, typography, spacing)
+│ ├── reset.css # CSS reset and base styles
+│ └── style.css # Main stylesheet (layout, components, responsiveness)
 ├── js/
-│   ├── main.js             # Hamburger menu + newsletter form validation (all pages)
-│   ├── products-data.js   # Product data (array of objects)
-│   ├── products.js         # Renders product cards to the DOM
-│   ├── chat.js              # OpenAI chatbot logic (fetch, error handling, UI states)
-│   ├── map.js                # Leaflet map logic (partner farm markers, error handling)
-│   ├── config.example.js  # API key template (committed)
-│   └── config.js            # Your real API key (gitignored, not committed)
+│ ├── main.js # Hamburger menu + newsletter form validation (all pages)
+│ ├── products-data.js # Product data (array of objects)
+│ ├── products.js # Renders product cards to the DOM
+│ ├── chat.js # OpenAI chatbot logic (fetch, error handling, UI states)
+│ ├── map.js # Leaflet map logic (partner farm markers, error handling)
+│ ├── config.example.js # API key template (committed)
+│ └── config.js # Your real API key (gitignored, not committed)
 ├── assets/
-│   └── images/              # Product and hero photography
+│ └── images/ # Product and hero photography
 └── README.md
-```
+
 
 ## Known Limitations
 
@@ -148,9 +143,31 @@ frontend-essentials/
   Journal for a fuller discussion of this and other ethical considerations).
 - The partner farm coordinates on the map are illustrative example locations,
   not verified real farm addresses.
-- The newsletter form's "success" message is a visual-only confirmation;
-  no data is actually sent or stored anywhere, since the project has no
-  backend.
+
+## Performance and Accessibility (Lighthouse)
+
+All three pages were audited with Chrome Lighthouse (incognito, no browser
+extensions, mobile emulation). Results:
+
+| Page | Performance | Accessibility | Best Practices | SEO |
+|---|---|---|---|---|
+| `index.html` | 97 | 100 | 100 | 100 |
+| `products.html` | 99 | 100 | 100 | 100 |
+| `contact.html` | 100 | 100 | 100 | 100 |
+
+One real issue was found and fixed during testing: a Cumulative Layout Shift
+(CLS) caused by the Google Fonts swap (the page briefly showed a fallback
+font, then shifted text when Frank Ruhl Libre/Arimo finished loading). This
+was resolved by changing the fonts' `display` strategy from `swap` to
+`optional` in `css/variables.css`, and by adding `<link rel="preconnect">`
+hints for `fonts.googleapis.com`/`fonts.gstatic.com` to speed up font
+loading. This raised `products.html`'s Performance score from 83 to 99.
+
+Note: running Lighthouse with browser extensions enabled (e.g. Grammarly)
+can lower the "Best Practices" score, since some flagged issues (deprecated
+API warnings, missing security headers) originate from the extension or
+from running on a local dev server without HTTPS — not from this project's
+code. Test in an incognito window for an accurate reading.
 
 ## Future Improvements
 
@@ -160,7 +177,6 @@ frontend-essentials/
   the conversation.
 - Replace the CSS-animated typing indicator with the exact animated icon
   from the Figma design.
-- Run Lighthouse audits and address any performance/accessibility findings.
 
 ## Resources
 
