@@ -2,7 +2,7 @@
    Design Tokens — hentet fra Figma-designet (Fram webshop)
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Arimo:wght@400;700&family=Frank+Ruhl+Libre:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arimo:wght@400;700&family=Frank+Ruhl+Libre:wght@300;400&display=optional');
 
 :root {
   /* Farger */
