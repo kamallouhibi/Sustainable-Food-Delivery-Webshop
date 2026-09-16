@@ -83,10 +83,12 @@ The website implements a Figma design provided by the client.
 ### Running the Project Locally
 
 1. Clone the repository:
+
 ```bash
    git clone <repo-url>
    cd frontend-essentials
 ```
+
 2. Set up your API key (see "API Key" section below).
 3. Open the project with Live Server (right-click `index.html` →
    "Open with Live Server").
@@ -99,9 +101,11 @@ To run it with real responses:
 1. Copy `js/config.example.js` and rename the copy to `js/config.js`.
 2. Get an API key at [platform.openai.com/api-keys](https://platform.openai.com/api-keys).
 3. Open `js/config.js` and replace the placeholder with your real key:
+
 ```js
-   const OPENAI_API_KEY = "your-real-key-here";
+const OPENAI_API_KEY = "your-real-key-here";
 ```
+
 4. `js/config.js` is listed in `.gitignore` and will never be committed.
 
 If you skip this step, the chatbot still works — it will show the built-in
@@ -132,7 +136,6 @@ frontend-essentials/
 │ └── images/ # Product and hero photography
 └── README.md
 
-
 ## Known Limitations
 
 - The project runs entirely in the browser; no backend or database.
@@ -149,11 +152,11 @@ frontend-essentials/
 All three pages were audited with Chrome Lighthouse (incognito, no browser
 extensions, mobile emulation). Results:
 
-| Page | Performance | Accessibility | Best Practices | SEO |
-|---|---|---|---|---|
-| `index.html` | 97 | 100 | 100 | 100 |
-| `products.html` | 99 | 100 | 100 | 100 |
-| `contact.html` | 100 | 100 | 100 | 100 |
+| Page            | Performance | Accessibility | Best Practices | SEO |
+| --------------- | ----------- | ------------- | -------------- | --- |
+| `index.html`    | 97          | 100           | 100            | 100 |
+| `products.html` | 99          | 100           | 100            | 100 |
+| `contact.html`  | 100         | 100           | 100            | 100 |
 
 One real issue was found and fixed during testing: a Cumulative Layout Shift
 (CLS) caused by the Google Fonts swap (the page briefly showed a fallback
@@ -182,6 +185,7 @@ code. Test in an incognito window for an accurate reading.
 
 - Figma design file (provided by course), used as the visual specification
   for layout, colors, typography, and component structure.
+- Claude (Anthropic) was used as a supporting tool during parts of the project, mainly for guidance, troubleshooting, and suggestions. The implementation was reviewed, tested, adapted, and quality-assured by the project author.
 - [Google Fonts](https://fonts.google.com/) for Frank Ruhl Libre and Arimo.
 - [OpenAI API documentation](https://platform.openai.com/docs/api-reference/chat)
   for the Chat Completions endpoint used by the chatbot.
